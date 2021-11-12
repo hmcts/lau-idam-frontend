@@ -1,0 +1,37 @@
+{% extends "../common/template.njk" %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+{% block content %}
+
+  {% block error_summary %}
+    {% include "common/error/summary.njk" %}
+  {% endblock %}
+
+  {% set searchTabHtml %}
+    {% include '../search/template.njk' %}
+  {% endset -%}
+
+  {% set logonsTabHtml %}
+    {%  include '../logons/template.njk' %}
+  {% endset -%}
+
+  {{ govukTabs({
+    items: [
+      {
+        label: "Search",
+        id: "search-tab",
+        panel: {
+          html: searchTabHtml
+        }
+      },
+      {
+        label: "Results",
+        id: "logon-results-tab",
+        panel: {
+          html: logonsTabHtml
+        }
+      }
+    ]
+  }) }}
+
+{% endblock %}

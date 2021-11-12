@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "classpath:/JsonSchema/logon_audit_schema.json",
+  "type": "object",
+  "title": "The LAU Logon Audit Schema",
+  "required": [
+    "logonLog",
+    "startRecordNumber",
+    "moreRecords"
+  ],
+  "properties": {
+    "logonLog": {
+      "id": "#logonLog",
+      "type": "array",
+      "items": { "$ref": "logonLogSchema.json" },
+      "title": "Array of logon logs"
+    },
+    "startRecordNumber": {
+      "id": "#startRecordNumber",
+      "type": "integer",
+      "minimum": 1,
+      "title": "The index of the first record out of the full result set provided"
+    },
+    "moreRecords": {
+      "id": "#moreRecords",
+      "type": "boolean",
+      "title": "Indicates where there are more records beyond the current page in the full result set"
+    }
+  }
+}
