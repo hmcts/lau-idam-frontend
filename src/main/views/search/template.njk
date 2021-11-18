@@ -10,90 +10,85 @@
 {% endset %}
 
 <form id="logon-search-form" class="form" method="post" action="/search">
-  {% call govukFieldset({
-    legend: {
-      text: "System Logons Search",
-      classes: "govuk-fieldset__legend--l",
-      isPageHeading: true
-    }
-  }) %}
+  <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">System Logons Search</h1>
+  </div>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
 
-        {{ govukInput({
-          label: {
-            text: "User ID"
-          },
-          classes: "govuk-!-width-three-quarters",
-          id: "userId",
-          name: "userId",
-          value: form.userId
-        }) }}
+      {{ govukInput({
+        label: {
+          text: "User ID"
+        },
+        classes: "govuk-!-width-three-quarters",
+        id: "userId",
+        name: "userId",
+        value: form.userId
+      }) }}
 
-        {{ govukInput({
-          label: {
-            text: "Email"
-          },
-          classes: "govuk-!-width-three-quarters",
-          id: "emailAddress",
-          name: "emailAddress",
-          value: form.emailAddress
-        }) }}
+      {{ govukInput({
+        label: {
+          text: "Email"
+        },
+        classes: "govuk-!-width-three-quarters",
+        id: "emailAddress",
+        name: "emailAddress",
+        value: form.emailAddress
+      }) }}
 
-      </div>
-      <div class="govuk-grid-column-one-half">
+    </div>
+    <div class="govuk-grid-column-one-half">
 
-        {{ govukInput({
-          label: {
-            text: "Time from (UTC)"
-          },
-          classes: "govuk-!-width-three-quarters",
-          suffix: {
-            html: calendarIcon,
-            classes: "start-timestamp-suffix"
-          },
-          id: "startTimestamp",
-          name: "startTimestamp",
-          value: form.startTimestamp
-        }) }}
+      {{ govukInput({
+        label: {
+          text: "Time from (UTC)"
+        },
+        classes: "govuk-!-width-three-quarters",
+        suffix: {
+          html: calendarIcon,
+          classes: "start-timestamp-suffix"
+        },
+        id: "startTimestamp",
+        name: "startTimestamp",
+        value: form.startTimestamp
+      }) }}
 
-        {{ govukInput({
-          label: {
-            text: "Time to (UTC)"
-          },
-          classes: "govuk-!-width-three-quarters",
-          suffix: {
-            html: calendarIcon,
-            classes: "end-timestamp-suffix"
-          },
-          id: "endTimestamp",
-          name: "endTimestamp",
-          value: form.endTimestamp
-        }) }}
+      {{ govukInput({
+        label: {
+          text: "Time to (UTC)"
+        },
+        classes: "govuk-!-width-three-quarters",
+        suffix: {
+          html: calendarIcon,
+          classes: "end-timestamp-suffix"
+        },
+        id: "endTimestamp",
+        name: "endTimestamp",
+        value: form.endTimestamp
+      }) }}
 
-        <input type="hidden" id="page" name="page" value="1">
-      </div>
+      <input type="hidden" id="page" name="page" value="1">
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      {{ govukButton({
+        name: "search-btn",
+        text: "Search",
+        type: "submit",
+        classes: "govuk-!-width-three-quarters govuk-!-margin-top-7",
+        preventDoubleClick: true,
+        value: "search"
+      }) }}
     </div>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
-        {{ govukButton({
-          name: "search-btn",
-          text: "Search",
-          type: "submit",
-          classes: "govuk-!-width-three-quarters govuk-!-margin-top-7",
-          preventDoubleClick: true,
-          value: "search"
-        }) }}
-      </div>
-
-      <div class="govuk-grid-column-one-half">
-        <p class="govuk-body govuk-body govuk-!-font-size-16">
-          <b>Note:</b> Please include time parameters in your search using the 'Time from' and 'Time to' fields, and
-          enter at least one other parameter to obtain search results.
-        </p>
-      </div>
+    <div class="govuk-grid-column-one-half">
+      <p class="govuk-body govuk-body govuk-!-font-size-16">
+        <b>Note:</b> Please include time parameters in your search using the 'Time from' and 'Time to' fields, and
+        enter at least one other parameter to obtain search results.
+      </p>
     </div>
-  {% endcall %}
+  </div>
 </form>
